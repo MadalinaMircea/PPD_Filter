@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace PPD_Filter
 {
+    [Serializable]
     class PPMImage
     {
         public string FirstComment { get; set; }
@@ -13,9 +14,9 @@ namespace PPD_Filter
         public int Width { get; set; }
         public int Height { get; set; }
         public int MaxValue { get; set; }
-        public List<Block> Blocks { get; set; }
+        public Block[] Blocks { get; set; }
 
-        public PPMImage(string firstComment, string secondComment, int width, int height, int max, List<Block> blocks)
+        public PPMImage(string firstComment, string secondComment, int width, int height, int max, Block[] blocks)
         {
             FirstComment = firstComment;
             SecondComment = secondComment;
@@ -23,6 +24,16 @@ namespace PPD_Filter
             Height = height;
             MaxValue = max;
             Blocks = blocks;
+        }
+
+        public PPMImage()
+        {
+            FirstComment = "";
+            SecondComment = "";
+            Width = 0;
+            Height = 0;
+            MaxValue = 0;
+            Blocks = new Block[0];
         }
     }
 }

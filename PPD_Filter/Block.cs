@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace PPD_Filter
 {
+    [Serializable]
     class Block
     {
-        public enum Types { Y, U, V}
+        public enum Types { Y, U, V, None}
         public int Size { get; set; }
         public double[,] Matrix { get; set; }
         public Types Type { get; set; }
@@ -22,6 +23,15 @@ namespace PPD_Filter
             Matrix = m;
             PositionI = posi;
             PositionJ = posj;
+        }
+
+        public Block()
+        {
+            Type = Types.None;
+            Size = 0;
+            Matrix = new double[0,0];
+            PositionI = -1;
+            PositionJ = -1;
         }
 
         public override string ToString()
